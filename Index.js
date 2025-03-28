@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>
                     <button class="edit" data-index="${index}">Edit</button>
                     <button class="delete" data-index="${index}">Delete</button>
-                    <button class="rate" data-index="${index}">Rate</button>
                 </td>
             `;
             bookList.appendChild(tr);
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rating = rateInput.value;
         const comment = commentInput.value;
 
-        const newBook = { title, author, rating: null, comment: null };
+        const newBook = { title, author, rating, comment};
         books.push(newBook);
         renderBooks();
         bookForm.reset();
@@ -47,10 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
             deleteBook(index);
         } else if (e.target.classList.contains("edit")) {
             editBook(index);
-        } else if (e.target.classList.contains("rate")) {
-            rateBook(index);
-        }
-    });
+        } 
+      });
 
     const deleteBook = (index) => {
         books.splice(index, 1);
